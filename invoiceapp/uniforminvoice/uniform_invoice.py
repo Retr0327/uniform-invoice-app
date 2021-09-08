@@ -1,12 +1,12 @@
 import re
 import datetime
 import requests
-from typing import List
+from typing import List, Union
 from bs4 import BeautifulSoup
 from string import Template
 from urllib.parse import urljoin
 from dataclasses import dataclass
-from .uniform_invoice_data import UniformInvoiceReward, UniformInvoiceTitle
+from .uniform_invoice_data import UniformInvoiceData
 
 
 CURRENT_YEAR = datetime.datetime.now().year
@@ -46,28 +46,29 @@ class UniformInvoiceDataDownloader:
         self.url = urljoin(BASE_URL, f"{self.month}.html")
         self.bsObj = download_html(self.url)
 
-    def download_data(self, name: str) -> List[str]:
+    def download_data(self, name: str) -> Union[str, List[str]]:
         """The download_data method downloads the data via the object UniformInvoiceReward and UniformInvoiceTitle, and stores the data
            in a dictionary.
         
         Returns:
-            a list
+            a string if the `name` refers to `title` or a map object if the `name` refers to `rewards`
         """
+        invoice_data = UniformInvoiceData(self.bsObj).clean_data()
         factories = {
-            "rewards": UniformInvoiceReward(self.bsObj),
-            "title": UniformInvoiceTitle(self.bsObj),
+            "title": invoice_data.title,
+            "rewards": invoice_data.winning_numbers,
         }
-        return list(factories[name].clean_data())
+        return factories[name]
 
     @property
     def claiming_date(self) -> List[str]:
-        title = self.download_data("title")[0]
+        title = self.download_data("title")
         dates = re.findall(r"\d+\-\d\-\d", title)
         return dates
 
     @property
-    def winning_numbers(self) -> List[str]:
-        rewards = self.download_data("rewards")
+    def winning_numbers(self) -> dict[str, Union[str, list]:
+        rewards = list(self.download_data("rewards"))
         numbers = {
             "special": rewards[0],
             "grand": rewards[1],
