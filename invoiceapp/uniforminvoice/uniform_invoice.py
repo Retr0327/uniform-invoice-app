@@ -67,7 +67,7 @@ class UniformInvoiceDataDownloader:
         return dates
 
     @property
-    def winning_numbers(self) -> dict[str, Union[str, list]:
+    def winning_numbers(self) -> dict[str, Union[str, list]]:
         rewards = list(self.download_data("rewards"))
         numbers = {
             "special": rewards[0],
