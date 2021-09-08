@@ -66,7 +66,7 @@ class UniformInvoiceDataDownloader:
     @property
     def claiming_date(self) -> List[str]:
         date = self.download_data("date")
-        claiming_date = re.findall(r"\d+\-\d\-\d", date)
+        claiming_date = re.findall(r"\d+\-\d+\-\d+", date)
         return claiming_date
 
     @property
