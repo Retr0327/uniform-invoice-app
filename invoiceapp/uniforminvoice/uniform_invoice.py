@@ -75,7 +75,7 @@ class UniformInvoiceDataDownloader:
         numbers = {
             "special": rewards[0],
             "grand": rewards[1],
-            "first": rewards[2].split("\n "),
+            "first": rewards[2].split("\n"),
             "sixth": rewards[3],
         }
         return numbers
