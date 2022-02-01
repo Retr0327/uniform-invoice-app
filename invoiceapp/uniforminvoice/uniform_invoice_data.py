@@ -24,7 +24,9 @@ class UniformInvoiceData:
     soup: BeautifulSoup
 
     def __post_init__(self) -> None:
-        self.table_tag = self.soup.find("table", class_=re.compile(r"mytable(green|pink)"))
+        self.table_tag = self.soup.find(
+            "table", class_=re.compile(r"mytable(green|pink|purple)")
+        )
 
     def extract_claiming_date(self, title_tag: BeautifulSoup) -> str:
         """The extract_title method extracts the claiming date from the html tag that stores the claiming date data.
