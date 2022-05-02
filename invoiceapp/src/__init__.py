@@ -1,3 +1,3 @@
-from .controllers import Content, RedeemFrame
+from .app import UniformInvoiceApp
 
-__all__ = ["Content", "RedeemFrame"]
+__all__ = ["UniformInvoiceApp"]
