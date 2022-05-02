@@ -1,3 +1,3 @@
-from .app import UniformInvoiceApp
+from .src import UniformInvoiceApp
 
 __all__ = ["UniformInvoiceApp"]
