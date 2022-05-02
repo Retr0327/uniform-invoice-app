@@ -1,1 +1,1 @@
-from html_downloader import download_html
+from .invoice_data_cleaner import UniformInvoiceCleaner
