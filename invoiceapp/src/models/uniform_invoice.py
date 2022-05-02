@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from utils import UniformInvoiceCleaner, build_bulletin
+from ..utils import UniformInvoiceCleaner, build_bulletin
 
 
 @dataclass
