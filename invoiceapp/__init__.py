@@ -1,1 +1,1 @@
-from .uniform_invoice_app import InvoiceApp
+from .app import UniformInvoiceApp
