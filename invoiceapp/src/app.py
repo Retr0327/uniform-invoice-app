@@ -5,12 +5,8 @@ from .controllers import Content, RedeemFrame
 class UniformInvoiceApp(tk.Tk):
     def __init__(self):
         super().__init__()
-
-        # setup tkinter
         self.title("Receipt")
         self.geometry("800x600")
-
-        # create the gui
         self.wrap_1 = tk.LabelFrame(self, text="本月發票開獎")
         self.wrap_1.place(height=175, width=500, rely=0.1, relx=0.0125)
         self.wrap_2 = tk.LabelFrame(self, text="兌獎")
