@@ -16,7 +16,7 @@ Uniform invoice app is a Tkinter application that allows users to check Taiwan u
 
 - Install Requirement
   ```bash 
-  cd windows-sshd-manager && pip install -r requirement.txt      
+  cd invoiceapp && pip install -r requirement.txt      
   ```
 
 ### 2. Start the app
