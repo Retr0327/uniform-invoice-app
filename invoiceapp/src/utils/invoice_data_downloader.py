@@ -1,6 +1,6 @@
 import re
 import pydantic
-from typing import Any, Mapping, Union
+from typing import Any, Union
 from bs4 import BeautifulSoup
 from dataclasses import dataclass
 
@@ -25,7 +25,7 @@ class UniformInvoiceDataInfo(pydantic.BaseModel):
 
     @pydantic.validator("claiming_date")
     @classmethod
-    def has_year(cls, value) -> str:
+    def has_claiming_date(cls, value) -> str:
         """The has_year method makes sure there is `claiming_date` value definied."""
         if not value:
             raise Exception("No claiming_date defined!")
