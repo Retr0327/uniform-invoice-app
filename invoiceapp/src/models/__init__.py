@@ -1,3 +1,4 @@
-from .uniform_invoice import UniformInvoice
+from .model import init_db, query
 
-__all__ = ["UniformInvoice"]
+
+__all__ = ["init_db", "query"]
