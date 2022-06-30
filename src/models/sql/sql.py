@@ -2,7 +2,9 @@ INVOICE = (
     "CREATE TABLE invoice ("
     "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
     "month TEXT NOT NULL,"
-    "year TEXT NOT NULL"
+    "year TEXT NOT NULL,"
+    "claiming_date_start TEXT NOT NULL,"
+    "claiming_date_end TEXT NOT NULL"
     ");"
 )
 
