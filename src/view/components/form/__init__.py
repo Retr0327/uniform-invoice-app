@@ -1,3 +1,3 @@
-from .form import create_form
+from .form import form_controller
 
-__all__ = ["create_form"]
+__all__ = ["form_controller"]
