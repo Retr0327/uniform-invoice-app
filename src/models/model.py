@@ -1,5 +1,5 @@
 import sqlite3
-from ..config import DB_PATH
+from config import DB_PATH
 from typing import Any, List, Literal, Optional, Union, Dict
 from .sql import INVOICE, PRIZE, PRIZE_TYPES, PRIZE_TYPES_VALUES, PRIZE_TYPES_INDEX
 
