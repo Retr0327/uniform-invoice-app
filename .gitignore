@@ -131,3 +131,6 @@ dmypy.json
 
 # sqlite3 database
 *.db
+
+# tempCodeRunnerFile
+tempCodeRunnerFile.py
