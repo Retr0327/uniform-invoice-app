@@ -2,7 +2,6 @@ import asyncio
 from typing import Dict, List
 from dataclasses import dataclass
 
-
 SUB_PRIZE = {
     "0": "first",
     "1": "second",
@@ -50,18 +49,16 @@ class PrizeData:
         container.append(prize)
         return container + self.generate_first_prize(first_prize)
 
-    def generate_sub_prize(
+    async def generate_sub_prize(
         self, index: int, first_prize: List[str]
     ) -> asyncio.Future[tuple[Dict[str, str]]]:
         """The generate_sub_prize mehtod generates a list of sub prizes numbers."""
-        sub_prize_list = list(
-            map(
-                lambda value: form_dict(SUB_PRIZE[str(index)], value[index:]),
-                first_prize,
-            )
+        sub_prize_list = map(
+            lambda value: form_dict(SUB_PRIZE[str(index)], value[index:]),
+            first_prize,
         )
 
-        return asyncio.gather(*sub_prize_list)
+        return await asyncio.gather(*sub_prize_list)
 
     async def generate(self) -> asyncio.Future[List[Dict[str, str]]]:
         special, grand, first, additional = self.prize_list
@@ -70,6 +67,6 @@ class PrizeData:
         return await asyncio.gather(
             form_dict("special", special),
             form_dict("grand", grand),
-            *[self.generate_sub_prize(num, cleand_first) for num in range(6)],
+            *(self.generate_sub_prize(num, cleand_first) for num in range(6)),
             form_dict("additional", additional),
         )
