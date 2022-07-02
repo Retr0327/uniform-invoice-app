@@ -18,6 +18,16 @@ def get_invoice(invoice_data) -> List:
     return query(invoice_query, invoice_data)
 
 
+def get_claiming_date(invoice_data) -> List:
+    date_query = f"""
+    SELECT {invoice_table}.claiming_date_start,
+           {invoice_table}.claiming_date_end
+    FROM {invoice_table}
+    WHERE month=? AND year=?;
+    """
+    return query(date_query, invoice_data)
+
+
 def create_invoice(invoice_data: List[str]) -> List[tuple]:
     invoice_insertion = f"""
     INSERT INTO {invoice_table} (
