@@ -45,7 +45,7 @@ def create_invoice(invoice_data: List[str]) -> List[tuple]:
 def create_prize(prize_data: Dict[str, str]) -> List[tuple]:
     prize_insertion = f"""
     WITH invoice_id AS (
-        SELECT invoice.id 
+        SELECT {invoice_table}.id 
         FROM {invoice_table} 
         WHERE month=:month 
         AND year=:year
