@@ -1,10 +1,11 @@
+from typing import Union
 import streamlit as st
 from ...services import fetch
 from ...components import form_controller
 from .options import years_options, month_options, get_month_index
 
 
-def create_invoice_form() -> None:
+def create_invoice_form() -> Union[str, tuple, None]:
     with st.form("invoice_form"):
         year: int = form_controller(
             "select", title="請選擇年份", options=years_options, index=1
