@@ -31,14 +31,13 @@ class QueryParams:
         value["year"] = self.year
         return value
 
-    def flat_prize_data(self, value: Dict[str, str]) -> Dict[str, str]:
-        """The flat_prize_data method flats the `self.prize_data`."""
-        for item in value if isinstance(value, list) else (value,):
-            return item
-
     def build_invoice(self):
         return (self.month, self.year, *self.claiming_data)
 
     def build_prize(self):
-        flatted_list = map(self.flat_prize_data, self.prize_data)
+        flatted_list = [
+            dct
+            for value in self.prize_data
+            for dct in (value if isinstance(value, list) else (value,))
+        ]
         return list(map(self.update_prize_key, flatted_list))
