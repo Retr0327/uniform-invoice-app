@@ -1,6 +1,6 @@
 # **uniform-invoice-app**
 
-Uniform invoice app is a Tkinter application that allows users to check Taiwan uniform invoice numbers.
+Uniform invoice app is a Streamlit application that allows users to check Taiwan uniform invoice numbers.
 
 <p align="center">
     <img src="./assest/demo.png" width="100%" height="100%" />
