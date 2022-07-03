@@ -24,6 +24,6 @@ class Table:
 
     def create(self):
         prize_list = self.create_prize_list(self.prize_data)
+        prize_list[-1] = "無" if prize_list[-1] == '0' else prize_list[-1]
         table = pd.DataFrame({"獎項": TABLE_INDEX, "號碼": prize_list})
-        
         return table.set_index("獎項")
