@@ -1,4 +1,5 @@
 import asyncio
+from audioop import add
 from typing import Dict, List
 from dataclasses import dataclass
 
@@ -60,6 +61,11 @@ class PrizeData:
 
         return await asyncio.gather(*sub_prize_list)
 
+    def generate_additional(self, value):
+        if value == "無":
+            return 0
+        return value
+
     async def generate(self) -> asyncio.Future[List[Dict[str, str]]]:
         special, grand, first, additional = self.prize_list
         cleand_first = self.generate_first_prize(first)
@@ -68,5 +74,5 @@ class PrizeData:
             form_dict("special", special),
             form_dict("grand", grand),
             *(self.generate_sub_prize(num, cleand_first) for num in range(6)),
-            form_dict("additional", additional),
+            form_dict("additional", self.generate_additional(additional)),
         )
