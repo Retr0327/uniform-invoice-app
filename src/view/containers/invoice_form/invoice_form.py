@@ -18,8 +18,10 @@ def create_invoice_form() -> Union[str, tuple, None]:
         if submitted:
             month = month[1] if month[0] == "0" else month[:2]
             result = fetch("get_data", month, year)
+            st.session_state["invoice_data"] = result
 
             if isinstance(result, str):
-                st.error(result)
+                del st.session_state["invoice_data"]
+                return st.error(result)
 
             return result
