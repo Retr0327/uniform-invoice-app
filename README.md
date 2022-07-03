@@ -3,7 +3,7 @@
 Uniform invoice app is a Streamlit application that allows users to check Taiwan uniform invoice numbers.
 
 <p align="center">
-    <img src="./assest/demo.png" width="100%" height="100%" />
+    <img src="./assest/demo.png" width="80%" height="60%" />
 </p>
 
 ## **Documentation**
