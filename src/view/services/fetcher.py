@@ -8,6 +8,6 @@ TEN_MINUTES = 60 * 10
 @st.cache(ttl=TEN_MINUTES)
 def fetch(method: Literal["get_data"], month: str, year: int) -> Union[str, tuple]:
     """The fetch function fetch the data in the database based on the `method`."""
-    methods = {"get_data": handle_create_invoice(month, str(year - 1911))}
+    methods = {"create_data": handle_create_invoice(month, str(year - 1911))}
 
     return methods[method]
