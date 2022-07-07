@@ -36,8 +36,7 @@ def create_invoice(invoice_data: List[str]) -> List[tuple]:
         claiming_date_start, 
         claiming_date_end
     )
-    VALUES (?, ?, ?, ?)
-    RETURNING id;
+    VALUES (?, ?, ?, ?);
     """
     return query(invoice_insertion, invoice_data)
 
