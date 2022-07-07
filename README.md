@@ -30,6 +30,7 @@ There are two main ways to run the app:
   ```
 
 - run in Docker
+  
   Install Docker, and user the following command to run:
   
   ```bash
