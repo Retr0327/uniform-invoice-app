@@ -1,10 +1,16 @@
-FROM python:3.9
+FROM python:3.9-slim
 
 WORKDIR /app
 
-COPY ./requirements.txt ./requirements.txt
+COPY Pipfile Pipfile.lock ./
 
-RUN pip3 install -r requirements.txt
+RUN pip install pipenv && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends gcc python3-dev libssl-dev && \
+    pipenv install --deploy --system && \
+    apt-get remove -y gcc python3-dev libssl-dev && \
+    apt-get autoremove -y && \
+    pip uninstall pipenv -y
 
 EXPOSE 8501
 
