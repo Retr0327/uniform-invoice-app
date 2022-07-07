@@ -1,7 +1,7 @@
 from pathlib import Path
 
-pkg_path = Path(__file__).resolve().parent.parent
-DB_DIR = pkg_path / ".db"
+pkg_path = Path("__file__").resolve().parent
+DB_DIR = pkg_path / "src" / ".db"
 DB_PATH = DB_DIR / "invoice.db"
 
 
