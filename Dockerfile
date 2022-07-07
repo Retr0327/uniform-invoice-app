@@ -2,7 +2,7 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-COPY Pipfile Pipfile.lock ./
+COPY ./Pipfile* ./
 
 RUN pip install pipenv && \
     apt-get update && \
